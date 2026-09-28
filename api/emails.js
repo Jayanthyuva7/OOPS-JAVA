@@ -119,7 +119,7 @@ async function verifyGoogleToken(idToken) {
     }
     const payload = await response.json()
     // Verify client ID matches
-    const expectedClientId = '207254417956-cgi3av80ac090nqrurpjkdhj19nievvp.apps.googleusercontent.com'
+    const expectedClientId = process.env.GOOGLE_CLIENT_ID || process.env.VITE_GOOGLE_CLIENT_ID || '70541249417-m2rdvs923f6senetukgrmhpp9q48cmo2.apps.googleusercontent.com'
     if (payload.aud !== expectedClientId) {
       console.warn('Token aud does not match client ID')
       return null

@@ -13,6 +13,9 @@ const ADMIN_EMAILS = [
 const ZOHO_CLIENT_ID = import.meta.env.VITE_ZOHO_CLIENT_ID || ''
 const ZOHO_ACCOUNTS_DOMAIN = import.meta.env.VITE_ZOHO_ACCOUNTS_DOMAIN || 'https://accounts.zoho.com'
 
+// ── Google OAuth configuration ───────────────────────────────────────────────
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '70541249417-m2rdvs923f6senetukgrmhpp9q48cmo2.apps.googleusercontent.com'
+
 const isZohoLoading = ref(false)
 // Plain variable (NOT a ref) — storing a cross-origin Window in ref() causes a SecurityError
 // because Vue's reactivity tries to read properties from the popup after it navigates to Zoho
@@ -351,7 +354,7 @@ function initGoogleSignIn() {
       }
 
       window.google.accounts.id.initialize({
-        client_id: '207254417956-cgi3av80ac090nqrurpjkdhj19nievvp.apps.googleusercontent.com',
+        client_id: GOOGLE_CLIENT_ID,
         callback: handleGoogleSignInCallback,
         auto_select: false
       })
